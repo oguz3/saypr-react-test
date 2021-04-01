@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { removeUser } from "../../actions";
+import { removeUser, setModal } from "../../actions";
 
 import * as Icons from '../icons';
 import styles from './userCard.module.css'
@@ -29,7 +29,7 @@ function UserCard(props) {
 
       <div className={styles.CardFooter}>
         <button className={styles.Like}><Icons.Like /></button>
-        <button><Icons.Edit /></button>
+        <button onClick={() => props.setModal(true)}><Icons.Edit /></button>
         <button onClick={() => props.removeUser(props.user.id)}><Icons.Delete /></button>
       </div>
     </div>
@@ -38,8 +38,9 @@ function UserCard(props) {
 
 const mapStateToProps = (state) => {
   return {
-    userData: state.userData
+    userData: state.userData,
+    isModalOpen: state.isModalOpen
   };
 };
 
-export default connect(mapStateToProps, { removeUser })(UserCard);
+export default connect(mapStateToProps, { removeUser, setModal })(UserCard);

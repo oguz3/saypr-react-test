@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { addUser, setLoading } from "./actions";
 import Loading from "./component/loading";
 import UserCard from "./component/card/userCard";
+import EditModal from "./component/modal/editModal";
 import "./style/App.css";
 
 function App(props) {
@@ -21,7 +22,6 @@ function App(props) {
 			props.setLoading(false);
 		}, 1500);
 	}
-	console.log(props.userData)
 
 	return (
 		<div className="App">
@@ -37,6 +37,7 @@ function App(props) {
 							/>
 						);
 					})}
+					<EditModal />
 				</div>
 			)}
 		</div>
