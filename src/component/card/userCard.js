@@ -29,7 +29,7 @@ function UserCard(props) {
 
       <div className={styles.CardFooter}>
         <button className={styles.Like}><Icons.Like /></button>
-        <button onClick={() => props.setModal(true)}><Icons.Edit /></button>
+        <button onClick={() => props.setModal([true, props.user.id])}><Icons.Edit /></button>
         <button onClick={() => props.removeUser(props.user.id)}><Icons.Delete /></button>
       </div>
     </div>

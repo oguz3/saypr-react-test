@@ -3,7 +3,7 @@ import { ADDUSER, REMOVEUSER, SETLOADING, SETMODAL } from "../actions/index";
 const INITIAL_STATE = {
 	userData: [],
 	isloading: true,
-	isModalOpen: false,
+	isModalOpen: [false, null],
 };
 
 export const reducer = (state = INITIAL_STATE, action) => {

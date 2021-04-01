@@ -10,13 +10,34 @@ function EditModal(props) {
     <div className={styles.Modal}>
         <Modal
             title="Basic Modal"
-            visible={props.isModalOpen}
-            onOk={() => props.setModal(false)}
-            onCancel={() => props.setModal(false)}
+            visible={props.isModalOpen[0]}
+            onOk={() => props.setModal([false, null])}
+            onCancel={() => props.setModal([false, null])}
         >
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
+            {props.userData.map(user => {
+                if(user.id === props.isModalOpen[1]){
+                    return(
+                        <span key={user.id}>
+                            <div className={styles.InputBox}>
+                                <label>Name:</label>
+                                <input type='text' id='name' defaultValue={user.name}/>
+                            </div>
+                            <div className={styles.InputBox}>
+                                <label>Email:</label>
+                                <input type='text' id='email' defaultValue={user.email}/>
+                            </div>
+                            <div className={styles.InputBox}>
+                                <label>Phone:</label>
+                                <input type='text' id='phone' defaultValue={user.phone}/>
+                            </div>
+                            <div className={styles.InputBox}>
+                                <label>Website:</label>
+                                <input type='text' id='website' defaultValue={user.website}/>
+                            </div>
+                        </span>
+                    );
+                }
+            })}
         </Modal>
     </div>
   );
@@ -24,6 +45,7 @@ function EditModal(props) {
 
 const mapStateToProps = (state) => {
   return {
+    userData: state.userData,
     isModalOpen: state.isModalOpen
   };
 };
