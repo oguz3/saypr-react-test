@@ -6,3 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+:focus {
+  outline: none;
+}
+.svgIcon{
+  font-size: 18px;
+  color: rgba(0,0,0,.45);
+  transition: color .3s;
+}

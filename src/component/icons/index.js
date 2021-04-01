@@ -1,0 +1,6 @@
+export { default as Mail } from './mail'
+export { default as Phone } from './phone'
+export { default as Web } from './web'
+export { default as Like } from './like'
+export { default as Edit } from './edit'
+export { default as Delete } from './delete'

@@ -5,3 +5,13 @@
   display: grid;
   grid-template-columns: repeat(4, 25%);
 }
+@media screen and (max-width: 1200px) {
+  .Card-grid{
+    grid-template-columns: repeat(3, 33%);
+  }
+}
+@media screen and (max-width: 768px) {
+  .Card-grid{
+    grid-template-columns: repeat(1, 100%);
+  }
+}

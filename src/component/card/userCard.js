@@ -1,27 +1,37 @@
 import { connect } from "react-redux";
 import { removeUser } from "../../actions";
 
+import * as Icons from '../icons';
 import styles from './userCard.module.css'
 
 function UserCard(props) {
-  const deleteUser = (id) => {
-    props.userData.map((user) => {
-      if (user.data.id === id) {
-        props.removeUser(user.data.id);
-      }
-    });
-  };
-
   return (
     <div className={styles.Card}>
-      <div
-        style={{ width: "50px" }}
-        dangerouslySetInnerHTML={{ __html: props.avatar }}
-      />
-      <p>
-        {props.id} - {props.name}
-      </p>
-      <button onClick={() => deleteUser(props.id)}>Delete</button>
+      <div className={styles.ImgCover}>
+        <img src={`https://avatars.dicebear.com/v2/avataaars/${props.user.username}.svg?options[mood][]=happy`} alt="Avatar"/>
+      </div>
+
+      <div className={styles.CardBody}>
+        <h3>{props.user.name}</h3>
+        <span>
+          <Icons.Mail /> 
+          <p>{props.user.email}</p>
+        </span>
+        <span>
+          <Icons.Phone /> 
+          <p>{props.user.phone}</p>
+        </span>
+        <span>
+          <Icons.Web /> 
+          <p>http://{props.user.website}</p>
+        </span>
+      </div>
+
+      <div className={styles.CardFooter}>
+        <button className={styles.Like}><Icons.Like /></button>
+        <button><Icons.Edit /></button>
+        <button onClick={() => props.removeUser(props.user.id)}><Icons.Delete /></button>
+      </div>
     </div>
   );
 }

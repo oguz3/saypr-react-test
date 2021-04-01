@@ -16,20 +16,12 @@ function App(props) {
 		const response = await axios.get(
 			`https://jsonplaceholder.typicode.com/users`
 		);
-		await getUserImg(response.data);
+		props.addUser(response.data);
+		setTimeout(() => {
+			props.setLoading(false);
+		}, 1500);
 	}
-
-	async function getUserImg(user) {
-		user.map(async (data) => {
-			const response = await axios.get(
-				`https://avatars.dicebear.com/v2/avataaars/${data.username}.svg?options[mood][]=happy`
-			);
-			props.addUser({ data, avatar: response.data });
-			setTimeout(() => {
-				props.setLoading(false);
-			}, 1500);
-		});
-	}
+	console.log(props.userData)
 
 	return (
 		<div className="App">
@@ -40,10 +32,8 @@ function App(props) {
 					{props.userData.map((user) => {
 						return (
 							<UserCard
-								key={user.data.id}
-								id={user.data.id}
-								name={user.data.name}
-								avatar={user.avatar}
+								key={user.id}
+								user={user}
 							/>
 						);
 					})}

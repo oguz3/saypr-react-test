@@ -10,13 +10,13 @@ export const reducer = (state = INITIAL_STATE, action) => {
     case ADDUSER:
       return {
         ...state,
-        userData: [...state.userData, action.payload]
+        userData: action.payload
       };
     case REMOVEUSER:
       return {
         ...state,
         userData: state.userData.filter(
-          (user) => user.data.id !== action.payload
+          (user) => user.id !== action.payload
         )
       };
     case SETLOADING:
