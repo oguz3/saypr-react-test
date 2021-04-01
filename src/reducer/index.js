@@ -1,4 +1,10 @@
-import { ADDUSER, REMOVEUSER, SETLOADING, SETMODAL } from "../actions/index";
+import {
+	ADDUSER,
+	REMOVEUSER,
+	UPDATEUSER,
+	SETLOADING,
+	SETMODAL,
+} from "../actions/index";
 
 const INITIAL_STATE = {
 	userData: [],
@@ -18,6 +24,21 @@ export const reducer = (state = INITIAL_STATE, action) => {
 				...state,
 				userData: state.userData.filter(
 					(user) => user.id !== action.payload
+				),
+			};
+		case UPDATEUSER:
+			return {
+				...state,
+				userData: state.userData.map((user) =>
+					user.id === action.payload.id
+						? {
+							...user,
+							name: action.payload.name,
+							email: action.payload.email,
+							phone: action.payload.phone,
+							website: action.payload.website,
+						  }
+						: user
 				),
 			};
 		case SETLOADING:
