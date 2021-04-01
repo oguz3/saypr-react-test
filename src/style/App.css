@@ -1,6 +1,3 @@
-.App {
-  font-family: sans-serif;
-}
 .Card-grid{
   display: grid;
   grid-template-columns: repeat(4, 25%);

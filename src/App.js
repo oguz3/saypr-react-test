@@ -20,7 +20,7 @@ function App(props) {
 		props.addUser(response.data);
 		setTimeout(() => {
 			props.setLoading(false);
-		}, 1500);
+		}, 1000);
 	}
 
 	return (

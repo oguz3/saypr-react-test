@@ -58,7 +58,7 @@ function EditModal(props) {
 								<div className={styles.InputBox}>
 									<label>Email:</label>
 									<input
-										type="text"
+										type="email"
 										id="email"
 										defaultValue={user.email}
                                         onChange={(event) =>
